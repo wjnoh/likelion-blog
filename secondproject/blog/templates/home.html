@@ -1,0 +1,63 @@
+<div class="navbar">
+  <ul class="navbar__items">
+    <a href="{% url 'home' %}" class="navbar__item">Likelion</a>
+    <a href="{% url 'new' %}" class="navbar__item">Write</a>
+  </ul>
+</div>
+
+<div class="main">
+  <div class="cards">
+    {% for blog in blogs.all %}
+    <div class="card">
+      <a href="{% url 'detail' blog.id %}">
+        <h1>{{ blog.title }}</h1>
+      </a>
+      <p>{{ blog.pub_date }}</p>
+      <p>{{ blog.summary }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .navbar {
+    height: 60px;
+    border-bottom: 1px solid black;
+  }
+
+  .navbar__items {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  .navbar__item {
+    list-style: none;
+    font-size: 20px;
+  }
+
+  .main {
+    padding: 0 30px;
+  }
+
+  .cards {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 300px;
+    border: 1px solid black;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+</style>
